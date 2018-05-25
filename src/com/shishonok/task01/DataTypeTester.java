@@ -1102,9 +1102,12 @@ public class DataTypeTester {
 		System.out.printf("%b |= %b -> %b\n", a, b, a |= b);
 		a = true;
 		System.out.printf("%b ^= %b -> %b\n", a, b, a ^= b);
-		System.out.printf("%b >>= %b -> %b\n", a, b, ERROR_COMP_STR);
-		System.out.printf("%b <<= %b -> %b\n", a, b, ERROR_COMP_STR);
-		System.out.printf("%b >>>= %b -> %b\n", a, b, ERROR_COMP_STR);
+		//a >>= b;
+		System.out.printf("%b >>= %b -> %s\n", a, b, ERROR_COMP_STR);
+		//a <<= b;
+		System.out.printf("%b <<= %b -> %s\n", a, b, ERROR_COMP_STR);
+		//a >>>= b;
+		System.out.printf("%b >>>= %b -> %s\n", a, b, ERROR_COMP_STR);
 		
 		//Ternary operator
 		System.out.println("----------Ternary operator----------");
