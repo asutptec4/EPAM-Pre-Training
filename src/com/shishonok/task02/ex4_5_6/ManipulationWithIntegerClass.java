@@ -6,21 +6,23 @@ package com.shishonok.task02.ex4_5_6;
  */
 public class ManipulationWithIntegerClass {
 
+	public static final int DEC_BASE = 10;
+	
 	/**
 	 * Method verifies that the digits of the four-digit number form an increasing sequence
 	 * @param n four-digit integer number
 	 * @return true if digit form an increasing sequence
 	 */
 	public static boolean hasIncreasingDigitSequence (int n) {
-		int lastdigit = n % 10;
-		n /= 10;
-		boolean isIncrease = lastdigit > (n % 10);
-		lastdigit = n % 10;
-		n /= 10;
-		isIncrease &= lastdigit > (n % 10);
-		lastdigit = n % 10;
-		n /= 10;
-		isIncrease &= lastdigit > (n % 10);
+		int lastdigit = n % DEC_BASE;
+		n /= DEC_BASE;
+		boolean isIncrease = lastdigit > (n % DEC_BASE);
+		lastdigit = n % DEC_BASE;
+		n /= DEC_BASE;
+		isIncrease &= lastdigit > (n % DEC_BASE);
+		lastdigit = n % DEC_BASE;
+		n /= DEC_BASE;
+		isIncrease &= lastdigit > (n % DEC_BASE);
 		return isIncrease;
 	}
 	
@@ -30,15 +32,15 @@ public class ManipulationWithIntegerClass {
 	 * @return true if digit form an decreasing sequence
 	 */
 	public static boolean hasDecreasingDigitSequence (int n) {
-		int lastdigit = n % 10;
-		n /= 10;
-		boolean isIncrease = lastdigit < (n % 10);
-		lastdigit = n % 10;
-		n /= 10;
-		isIncrease &= lastdigit < (n % 10);
-		lastdigit = n % 10;
-		n /= 10;
-		isIncrease &= lastdigit < (n % 10);
+		int lastdigit = n % DEC_BASE;
+		n /= DEC_BASE;
+		boolean isIncrease = lastdigit < (n % DEC_BASE);
+		lastdigit = n % DEC_BASE;
+		n /= DEC_BASE;
+		isIncrease &= lastdigit < (n % DEC_BASE);
+		lastdigit = n % DEC_BASE;
+		n /= DEC_BASE;
+		isIncrease &= lastdigit < (n % DEC_BASE);
 		return isIncrease;
 	}
 	
@@ -49,17 +51,17 @@ public class ManipulationWithIntegerClass {
 	 */
 	public static double calcDigitAverage(int n) {
 		double s = 0;
-		s += n % 10;
-		n /= 10;
-		s += n % 10;
-		n /= 10;
-		s += n % 10;
-		n /= 10;
-		s += n % 10;
-		n /= 10;
-		s += n % 10;
-		n /= 10;
-		s += n % 10;
+		s += n % DEC_BASE;
+		n /= DEC_BASE;
+		s += n % DEC_BASE;
+		n /= DEC_BASE;
+		s += n % DEC_BASE;
+		n /= DEC_BASE;
+		s += n % DEC_BASE;
+		n /= DEC_BASE;
+		s += n % DEC_BASE;
+		n /= DEC_BASE;
+		s += n % DEC_BASE;
 		s /= 6;
 		return s;
 	}
@@ -71,17 +73,17 @@ public class ManipulationWithIntegerClass {
 	 */
 	public static double calcDigitGeometricMean(int n) {
 		double g = 1;
-		g *= n % 10;
-		n /= 10;
-		g *= n % 10;
-		n /= 10;
-		g *= n % 10;
-		n /= 10;
-		g *= n % 10;
-		n /= 10;
-		g *= n % 10;
-		n /= 10;
-		g *= n % 10;
+		g *= n % DEC_BASE;
+		n /= DEC_BASE;
+		g *= n % DEC_BASE;
+		n /= DEC_BASE;
+		g *= n % DEC_BASE;
+		n /= DEC_BASE;
+		g *= n % DEC_BASE;
+		n /= DEC_BASE;
+		g *= n % DEC_BASE;
+		n /= DEC_BASE;
+		g *= n % DEC_BASE;
 		g = Math.pow(g, 1. / 6);
 		return g;
 	}
@@ -92,19 +94,19 @@ public class ManipulationWithIntegerClass {
 	 * @return integer number with reverse sequence of digits
 	 */
 	public static int reverse(int n) {
-		int nr = n % 10;
-		n /= 10;
-		nr = nr * 10 + n % 10;
-		n /= 10;
-		nr = nr * 10 + n % 10;
-		n /= 10;
-		nr = nr * 10 + n % 10;
-		n /= 10;
-		nr = nr * 10 + n % 10;
-		n /= 10;
-		nr = nr * 10 + n % 10;
-		n /= 10;
-		nr = nr * 10 + n % 10;
+		int nr = n % DEC_BASE;
+		n /= DEC_BASE;
+		nr = nr * DEC_BASE + n % DEC_BASE;
+		n /= DEC_BASE;
+		nr = nr * DEC_BASE + n % DEC_BASE;
+		n /= DEC_BASE;
+		nr = nr * DEC_BASE + n % DEC_BASE;
+		n /= DEC_BASE;
+		nr = nr * DEC_BASE + n % DEC_BASE;
+		n /= DEC_BASE;
+		nr = nr * DEC_BASE + n % DEC_BASE;
+		n /= DEC_BASE;
+		nr = nr * DEC_BASE + n % DEC_BASE;
 		return nr;
 	}
 }

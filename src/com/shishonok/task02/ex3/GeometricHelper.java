@@ -14,9 +14,11 @@ public class GeometricHelper {
 	 * @return area of the ring
 	 */
 	public static double findRingArea(double r1, double r2) {
-		double s1 = Math.PI * r1 * r1;
-		double s2 = Math.PI * r2 * r2;
-		return s1 - s2;
+		return findCircleArea(r1) - findCircleArea(r2);
+	}
+	
+	public static double findCircleArea(double r) {
+		return Math.PI * r * r;
 	}
 	
 	/**
@@ -26,9 +28,7 @@ public class GeometricHelper {
 	 * @param c	second side of rectangle
 	 */
 	public static void findNumberOfSquares(double a, double b, double c) {
-		int kb = (int) (b / a);
-		int kc = (int) (c / a);
-		int numberOfSquares = kb * kc;
+		int numberOfSquares = (int) (b / a) * (int) (c / a);
 		double restArea = b * c - numberOfSquares * a * a;
 		System.out.printf("Rectangle b = %f x c = %f contain %d squares a = %f, rest area is %f\n", b, c, numberOfSquares, a, restArea);
 	}
