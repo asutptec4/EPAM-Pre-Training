@@ -2,5 +2,5 @@
 Java from scratch
 
 Task01 - Data Types & Operations
-
-add Task02 - Linear Algorithms
+Task02 - Linear Algorithms
+add Task03 - Branching Algorithms
