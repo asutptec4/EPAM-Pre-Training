@@ -15,18 +15,14 @@ public class Alphabet {
 	 */
 	public static String isVowel1(char ch) {
 		String result;
-		switch (ch) {
-			case 'A':
+		switch (Character.toLowerCase(ch)) {
 			case 'a': 
-			case 'E':
 			case 'e': 
-			case 'I':
 			case 'i': 
-			case 'O':
-			case 'o': 
-			case 'Y':
+			case 'o':
+			case 'u':
 			case 'y': result = ch + " is vowel"; break;
-			default : result = ch + " is not vowel"; break;
+			default : result = ch + " is not vowel";
 		}
 		return result;
 	}
@@ -37,30 +33,21 @@ public class Alphabet {
 	 * @return true if vowel
 	 */
 	public static String isVowel2(char ch) {
-		String result;
-		if (ch == 'A') {
-			result = ch + " is vowel";;
-		} else if (ch == 'a') {
+		String result = ch + " is not vowel";
+		char ch1 = Character.toLowerCase(ch);
+		if (ch1 == 'a') {
 			result = ch + " is vowel";
-		} else if (ch == 'E') {
+		} else if (ch1 == 'e') {
+			result = ch1 + " is vowel";
+		} else if (ch1 == 'i') {
 			result = ch + " is vowel";
-		} else if (ch == 'e') {
+		} else if (ch1 == 'o') {
 			result = ch + " is vowel";
-		} else if (ch == 'I') {
+		} else if (ch1 == 'u') {
 			result = ch + " is vowel";
-		} else if (ch == 'i') {
+		} else if (ch1 == 'y') {
 			result = ch + " is vowel";
-		} else if (ch == 'O') {
-			result = ch + " is vowel";
-		} else if (ch == 'o') {
-			result = ch + " is vowel";
-		} else if (ch == 'Y') {
-			result = ch + " is vowel";
-		} else if (ch == 'y') {
-			result = ch + " is vowel";
-		} else {
-			result = ch + " is not vowel";
-		}
+		} 
 		return result;
 	}
 
@@ -70,8 +57,9 @@ public class Alphabet {
 	 * @return true if vowel
 	 */
 	public static String isVowel3(char ch) {
-		return (ch == 'A' || ch == 'e' || ch == 'E' || ch == 'e' || ch == 'I' || ch == 'i' || ch == 'O'
-				|| ch == 'o' || ch == 'Y' || ch == 'y')? ch + " is vowel" : ch + " is not vowel";
+		char ch1 = Character.toLowerCase(ch);
+		return (ch1 == 'a' || ch1 == 'e' || ch1 == 'i' || ch1 == 'o' || ch1 == 'u'
+				|| ch1 == 'y') ? ch + " is vowel" : ch + " is not vowel";
 	}
 	
 	/**
@@ -80,28 +68,8 @@ public class Alphabet {
 	 * @return true if vowel
 	 */
 	public static String isVowel4(char ch) {
-		if (ch != 'A') {
-			if (ch != 'a') {
-				if (ch != 'E') {
-					if (ch != 'e') {
-						if (ch != 'I') {
-							if (ch != 'i') {
-								if (ch != 'O') {
-									if (ch != 'o') {
-										if (ch != 'Y') {
-											if (ch != 'y') {
-												return ch + " is not vowel";
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-		return ch + " is vowel";
+		return "AaEeIiOoUuYy".contains(ch + "") ? ch + " is vowel"
+				: ch + " is not vowel";
 	}
 	
 	/**
@@ -110,49 +78,13 @@ public class Alphabet {
 	 * @return true if vowel
 	 */
 	public static String isVowel5(char ch) {
-		String result;
-		if (ch == 'A') {
-			result = ch + " is vowel";
-		} else {
-			if (ch == 'a') {
-				result = ch + " is vowel";
-			} else {
-				if (ch == 'E') {
-					result = ch + " is vowel";
-				} else {
-					if (ch == 'e') {
-						result = ch + " is vowel";
-					} else {
-						if (ch == 'I') {
-							result = ch + " is vowel";
-						} else {
-							if (ch == 'i') {
-								result = ch + " is vowel";
-							} else {
-								if (ch == 'O') {
-									result = ch + " is vowel";
-								} else {
-									if (ch == 'o') {
-										result = ch + " is vowel";
-									} else {
-										if (ch == 'Y') {
-											result = ch + " is vowel";
-										} else {
-											if (ch == 'y') {
-												result = ch + " is vowel";
-											} else {
-												return result = ch + " is not vowel";
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
+		char[] vowels = {'a', 'e', 'i', 'o', 'u', 'y' , 'A', 'E', 'I', 'O', 'U', 'Y'};
+		for (char c : vowels) {
+			if (c == ch) {
+				return ch + " is vowel";
 			}
 		}
-		return result;
+		return ch + " is not vowel";
 	}
 	
 	/**
@@ -161,20 +93,6 @@ public class Alphabet {
 	 * @return true if vowel
 	 */
 	public static String isVowel6(char ch) {
-		String result;
-		switch (ch) {
-			case 'A': result = ch + " is vowel"; break;
-			case 'a': result = ch + " is vowel"; break;
-			case 'E': result = ch + " is vowel"; break;
-			case 'e': result = ch + " is vowel"; break;
-			case 'I': result = ch + " is vowel"; break;
-			case 'i': result = ch + " is vowel"; break;
-			case 'O': result = ch + " is vowel"; break;
-			case 'o': result = ch + " is vowel"; break;
-			case 'Y': result = ch + " is vowel"; break;
-			case 'y': result = ch + " is vowel"; break;
-			default : result = ch + " is not vowel"; break;
-		}
-		return result;
+		return "AaEeIiOoUuYy".indexOf(ch) != -1 ? ch + " is vowel" : ch + " is not vowel";
 	}
 }

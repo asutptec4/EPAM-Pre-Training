@@ -8,17 +8,6 @@ package com.shishonok.task04.ex1;
  */
 public class HeadsOrTails {
 	
-	
-	/**
-	 * Count heads and tails when a coin tossed n times
-	 * @param n number of coin tosses
-	 * @return string with 
-	 */
-	public static String countHeadsAndTails(int n) {
-		int heads = HeadsOrTails.countHeads(n);
-		return "heads - " + heads + " and tail - " + (n - heads);
-	}
-	
 	/**
 	 * Count heads when a coin tossed n times
 	 * @param n number of coin tosses

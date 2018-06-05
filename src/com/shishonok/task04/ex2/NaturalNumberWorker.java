@@ -9,6 +9,7 @@ package com.shishonok.task04.ex2;
 public class NaturalNumberWorker {
 	
 	public static final int DEC_BASE = 10;
+	public static final int FIRST_PRIME = 2;
 	
 	/**
 	 * Find the largest digit.
@@ -16,8 +17,8 @@ public class NaturalNumberWorker {
 	 * @return the largest digit
 	 */
 	public static int findLargestDigit(int n) {
-		int result = n % DEC_BASE;
-		n /= DEC_BASE;
+		int result = 0;
+		n = n > 0 ? n : -n;
 		while (n > 0) {
 			if (n % DEC_BASE > result) {
 				result = n % DEC_BASE;
@@ -33,8 +34,8 @@ public class NaturalNumberWorker {
 	 * @return a natural number with reverse sequence of digits
 	 */
 	public static int reverse(int n) {
-		int result = n % DEC_BASE;
-		n /= DEC_BASE;
+		int result = 0;
+		n = n > 0 ? n : -n;
 		while (n > 0) {
 			result = result * DEC_BASE + n % DEC_BASE;
 			n /= DEC_BASE;
@@ -48,7 +49,8 @@ public class NaturalNumberWorker {
 	 * @return true if natural number is palindrome
 	 */
 	public static boolean checkPalindrome(int n) {
-		return (n ^ NaturalNumberWorker.reverse(n)) == 0 ? true : false;
+		n = n > 0 ? n : -n;
+		return (n ^ reverse(n)) == 0 ? true : false;
 	}
 	
 	/**
@@ -57,10 +59,11 @@ public class NaturalNumberWorker {
 	 * @return true if natural number is prime
 	 */
 	public static boolean isPrime(int n) {
-		if ((n % 2 == 0 && n != 2) || (n == 1) || (n == 0)) {
+		n = n > 0 ? n : -n;
+		if (n % 2 == 0 && n != FIRST_PRIME || n < FIRST_PRIME) {
 			return false;
 		}
-		for (int i = 3; i * i <= n; i += 2) {
+		for (int i = FIRST_PRIME + 1; i * i <= n; i += 2) {
 			if (n % i == 0) {
 				return false;
 			}
@@ -75,8 +78,9 @@ public class NaturalNumberWorker {
 	 */
 	public static String findPrimeDividers(int n) {
 		String result = "";
-		for(int i = 2; i <= n; i++) {
-			if (n % i == 0 && NaturalNumberWorker.isPrime(i)) {
+		n = n > 0 ? n : -n;
+		for (int i = FIRST_PRIME; i <= n; i++) {
+			if (n % i == 0 && isPrime(i)) {
 				result += i + " ";
 			}
 		}
@@ -90,6 +94,8 @@ public class NaturalNumberWorker {
 	 * @return greatest common divisor
 	 */
 	public static int findGCD(int a, int b) {
+		a = a > 0 ? a : -a;
+		b = b > 0 ? b : -b;
 		while (a != 0 && b != 0) {
 			if (a > b) {
 				a %= b;
@@ -107,6 +113,8 @@ public class NaturalNumberWorker {
 	 * @return least common multiple
 	 */
 	public static int findLCM(int a, int b) {
+		a = a > 0 ? a : -a;
+		b = b > 0 ? b : -b;
 		return a * b / findGCD(a, b);
 	}
 	
@@ -117,9 +125,9 @@ public class NaturalNumberWorker {
 	 */
 	public static int findNumDifDigit(int n) {
 		int result = 0;
-		int tempn;
+		n = n > 0 ? n : -n;
 		for (int i = 0; i < DEC_BASE; i++) {
-			tempn = n;
+			int tempn = n;
 			while (tempn > 0) {
 				if (tempn % DEC_BASE == i) {
 					result++;
@@ -131,14 +139,3 @@ public class NaturalNumberWorker {
 		return result;
 	}
 }
-
-/*
-Develop the most effective algorithms and write the code for the solution
-the following tasks:
-find the largest digit of a natural number;
-check whether the given natural number is a palindrome;
-determine whether a given natural number is prime;
-find all prime divisors of a given natural number;
-find the GCD and LCM of two natural numbers a and b.
-Find the number of different digits for a given natural number.
-*/

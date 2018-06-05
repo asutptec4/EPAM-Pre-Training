@@ -7,25 +7,28 @@ package com.shishonok.task03.ex5;
  * @author Alexander Shishonok
  */
 public class GregorianCalendar {
-
+	
+	public static final int JAN = 1;
+	public static final int FEB = 2;
+	public static final int MAR = 3;
+	public static final int APR = 4;
+	public static final int MAY = 5;
+	public static final int JUN = 6;
+	public static final int JUL = 7;
+	public static final int AUG = 8;
+	public static final int SEP = 9;
+	public static final int OCT = 10;
+	public static final int NOV = 11;
+	public static final int DEC = 12;
+	
 	/**
 	 * Check if year is leap. Method return false if year is negative.
 	 * @param year checked year
 	 * @return true if year is leap
 	 */
-	public static boolean isLeapYear(int year) {
-		boolean isLeap = false;
-		if (year > 0) {
-			if (year % 4 == 0) {
-				isLeap = true;
-				if (year % 100 == 0) {
-					if (year % 400 != 0) {
-						isLeap = false;
-					}
-				}
-			}
-		}
-		return isLeap;
+	public static boolean isLeapYear(int y) {
+		return y >= 0 && y % 4 == 0 && (y % 100 != 0 || y % 400 == 0);
+		
 	}
 	
 	/**
@@ -36,30 +39,8 @@ public class GregorianCalendar {
 	 * @return
 	 */
 	public static String evalNextDay(int d, int m, int y) {
-		String result = "Wrong initial date";
-		
-		if (y > 0) {
-			if (m == 1 || m == 3 || m == 5 || m == 7 || m == 8 || m == 10 || m == 12) {
-				if (d >= 1 && d <= 31) {
-					result = increaseDay(31, d, m, y);
-				}
-			} else if (m == 4 || m == 6  || m == 9 || m == 11) {
-				if (d >= 1 && d <= 30) {
-					result = increaseDay(30, d, m, y);
-					}
-			} else if (m == 2) {
-				if (isLeapYear(y)) {
-					if (d >= 1 && d <= 29) {
-						result = increaseDay(29, d, m, y);
-					}
-				} else {
-					if (d >= 1 && d <= 28) {
-						result = increaseDay(28, d, m, y);
-					}
-				}
-			}	
-		} 
-		return result;
+		return y > 0 && m >= JAN && m <= DEC && d >= 1 && d <= maxDayInMonth(m, y)
+				? increaseDay(d, m, y) : "Wrong initial date";
 	}
 	
 	/** 
@@ -81,22 +62,51 @@ public class GregorianCalendar {
 	 * @param y current year
 	 * @return next day after current
 	 */
-	public static String increaseDay(int max, int d, int m, int y) {
-		String res;
-		if (d != max) {
-			d += 1;
-			res = formatDate(d, m, y);
+	public static String increaseDay(int d, int m, int y) {
+		if (d != maxDayInMonth(m, y)) {
+			d++;
 		} else {
 			d = 1;
-			if (m != 12) {
-				m += 1;
-				res = formatDate(d, m, y);
+			if (m != DEC) {
+				m++;
 			} else {
-				m = 1;
-				y = y + 1;
-				res = formatDate(d, m, y);
+				m = JAN;
+				y++;
 			}
 		}
-		return res;
+		return formatDate(d, m, y);
+	}
+	
+	/**
+	 * Return max day in current month.
+	 * @param m current month
+	 * @param y current year
+	 * @return max day
+	 */
+	public static int maxDayInMonth(int m, int y) {
+		int maxDay;
+		switch (m) {
+		case JAN:
+		case MAR:
+		case MAY:
+		case JUL:
+		case AUG:
+		case OCT:
+		case DEC:
+			maxDay = 31;
+			break;
+		case APR:
+		case JUN:
+		case SEP:
+		case NOV:
+			maxDay = 30;
+			break;
+		case FEB:
+			maxDay = isLeapYear(y) ? 29 : 28;
+			break;
+		default:
+			maxDay = 0;
+		}
+		return maxDay;
 	}
 }

@@ -20,7 +20,8 @@ public class ThreePointsCheck {
 		dist_ab = a.calcDistanceTo(b);
 		dist_bc = b.calcDistanceTo(c);
 		dist_ac = a.calcDistanceTo(c);
-		return dist_ab < dist_ac + dist_bc && dist_ab > Math.abs(dist_bc - dist_ac);
+		return dist_ab < dist_ac + dist_bc 
+				&& dist_ab > Math.abs(dist_bc - dist_ac);
 	}
 	
 	/**

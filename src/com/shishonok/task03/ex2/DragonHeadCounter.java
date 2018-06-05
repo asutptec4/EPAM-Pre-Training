@@ -22,23 +22,20 @@ public class DragonHeadCounter {
 	 * @return number of heads
 	 */
 	public static int evalHeads(int age) throws DragonAgeException {
-		int numHead, delta;
-		
+		int numHead;
 		if (age < 0) {
 			throw new DragonAgeException("Dragon is not yet born");
 		}
-		
 		if (age > SECOND_BORDER) {
-			delta = age - SECOND_BORDER;
 			numHead = INIT_HEADS + FIRST_BORDER * HEADS_BEFORE_FB
-					+ (SECOND_BORDER - FIRST_BORDER) * HEADS_BETWEEN_FB_SB + delta * HEADS_AFTER_SB ; 
+					+ (SECOND_BORDER - FIRST_BORDER) * HEADS_BETWEEN_FB_SB
+					+ age * HEADS_AFTER_SB - SECOND_BORDER * HEADS_AFTER_SB ; 
 		} else if (age > FIRST_BORDER) {
-			delta = age - FIRST_BORDER;
-			numHead = INIT_HEADS + FIRST_BORDER * HEADS_BEFORE_FB + delta * HEADS_BETWEEN_FB_SB;
+			numHead = INIT_HEADS + FIRST_BORDER * HEADS_BEFORE_FB
+					+ age * HEADS_BETWEEN_FB_SB - SECOND_BORDER * HEADS_BETWEEN_FB_SB;
 		} else {
 			numHead = INIT_HEADS + age * HEADS_BEFORE_FB;
 		}
-		
 		return numHead;
 	}
 	

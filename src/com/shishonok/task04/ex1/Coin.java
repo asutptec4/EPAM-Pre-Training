@@ -17,7 +17,6 @@ public enum Coin {
 	 * @return 
 	 */
 	public static Coin tossCoin() {
-		Random rand = new Random();
-		return rand.nextBoolean() ? Coin.HEAD : Coin.TAIL;
+		return new Random().nextBoolean() ? Coin.HEAD : Coin.TAIL;
 	}
 }

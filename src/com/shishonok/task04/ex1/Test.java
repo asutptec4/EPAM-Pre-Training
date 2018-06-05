@@ -10,7 +10,8 @@ import com.shishonok.task03.ex1.View;
  */
 public class Test {
 	public static void execute(int n) {
-		View.printf("Toss a coin %d times: %s\n", n, HeadsOrTails.countHeadsAndTails(n));
+		int heads = HeadsOrTails.countHeads(n);
+		View.printf("Toss a coin %d times: heads - %d and tails - %d\n", n, heads, n - heads);
 	}
 }
 
