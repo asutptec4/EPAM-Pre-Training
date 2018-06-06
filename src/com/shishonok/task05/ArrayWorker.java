@@ -24,7 +24,7 @@ public class ArrayWorker {
 
 		int result = arr[0]; // Accept that first element is desired
 		for (int i = 1; i < arr.length; i++) {
-			if (arr[i] < arr[result]) {
+			if (arr[i] < result) {
 				result = arr[i];
 			}
 		}
@@ -46,7 +46,7 @@ public class ArrayWorker {
 
 		int result = arr[0]; // Accept that first element is desired
 		for (int i = 1; i < arr.length; i++) {
-			if (arr[i] > arr[result]) {
+			if (arr[i] > result) {
 				result = arr[i];
 			}
 		}
