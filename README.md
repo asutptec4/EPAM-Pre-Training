@@ -7,4 +7,7 @@ Task02 - Linear Algorithms
 
 Task03 - Branching Algorithms
 
-add Task04 - Iterative Algorithms
+Task04 - Iterative Algorithms
+
+add Task05 - One-Dimensional Arrays
+
