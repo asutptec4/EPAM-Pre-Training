@@ -9,5 +9,6 @@ Task03 - Branching Algorithms
 
 Task04 - Iterative Algorithms
 
-add Task05 - One-Dimensional Arrays
+Task05 - One-Dimensional Arrays
 
+Task06 - Multidimensional Arrays

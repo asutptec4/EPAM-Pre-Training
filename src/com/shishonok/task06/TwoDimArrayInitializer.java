@@ -23,7 +23,7 @@ public class TwoDimArrayInitializer {
 	 */
 	public static void init(double[][] arr, double min, double max) {
 		if (arr == null) {
-			throw new NullPointerException("Couldn't initialize array");
+			throw new IllegalArgumentException("Couldn't initialize null reference.");
 		}
 		Random rand = new Random();
 		for (int i = 0; i < arr.length; i++) {

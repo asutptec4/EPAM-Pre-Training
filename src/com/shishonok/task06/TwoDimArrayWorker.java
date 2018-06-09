@@ -95,14 +95,15 @@ public class TwoDimArrayWorker {
 	 * 
 	 * @param arr
 	 *            source array
-	 * @return index of first local minimum
+	 * @return index of first local minimum, return [-1,-1] if element doesn't exist
 	 */
 	public static int[] findFirstMinElemIndex(double[][] arr) {
 		checkArray(arr);
 		for (int i = 0; i < arr.length; i++) {
 			for (int j = 0; j < arr[i].length; j++) {
-				if (i > 0 && i < arr.length - 1 && j > 0 && j < arr[i].length - 1 && arr[i][j] < arr[i - 1][j]
-						&& arr[i][j] < arr[i][j - 1] && arr[i][j] < arr[i + 1][j] && arr[i][j] < arr[i][j + 1]) {
+				if (i > 0 && i < arr.length - 1 && j > 0 && j < arr[i].length - 1
+						&& arr[i][j] < arr[i - 1][j] && arr[i][j] < arr[i][j - 1]
+								&& arr[i][j] < arr[i + 1][j] && arr[i][j] < arr[i][j + 1]) {
 					return new int[] { i, j };
 				}
 			}
@@ -115,14 +116,15 @@ public class TwoDimArrayWorker {
 	 * 
 	 * @param arr
 	 *            source array
-	 * @return index of first local maximum
+	 * @return index of first local maximum, return [-1,-1] if element doesn't exist
 	 */
 	public static int[] findFirstMaxElemIndex(double[][] arr) {
 		checkArray(arr);
 		for (int i = 0; i < arr.length; i++) {
 			for (int j = 0; j < arr[i].length; j++) {
-				if (i > 0 && i < arr.length - 1 && j > 0 && j < arr[i].length - 1 && arr[i][j] > arr[i - 1][j]
-						&& arr[i][j] > arr[i][j - 1] && arr[i][j] > arr[i + 1][j] && arr[i][j] > arr[i][j + 1]) {
+				if (i > 0 && i < arr.length - 1 && j > 0 && j < arr[i].length - 1
+						&& arr[i][j] > arr[i - 1][j] && arr[i][j] > arr[i][j - 1]
+								&& arr[i][j] > arr[i + 1][j] && arr[i][j] > arr[i][j + 1]) {
 					return new int[] { i, j };
 				}
 			}
@@ -149,40 +151,14 @@ public class TwoDimArrayWorker {
 	}
 
 	/**
-	 * Transpose the square integer matrix.
-	 * 
-	 * @param arr
-	 *            original matrix
-	 * @return transposed matrix
-	 */
-	public static void transposeSquareMatrix(int[][] arr) {
-		checkSquareMatrix(arr);
-		for (int i = 0; i < arr.length; i++) {
-			for (int j = 0; j < arr[i].length; j++) {
-				if (i != j) {
-					arr[i][j] ^= arr[j][i];
-					arr[j][i] ^= arr[i][j];
-					arr[i][j] ^= arr[j][i];
-				}
-			}
-		}
-	}
-
-	private static void checkSquareMatrix(int[][] arr) {
-		if (arr == null || arr.length == 0 || arr[0].length == 0 || arr.length != arr[0].length) {
-			throw new IllegalArgumentException("Ref is null or no elements in the array!");
-		}
-	}
-
-	/**
-	 * Check input array. Throws llegalArgumentException if reference is null or
-	 * array does not have elements.
+	 * Check input array. Throws lllegalArgumentException if reference is null
+	 * or array does not have elements.
 	 * 
 	 * @param arr
 	 */
 	public static void checkArray(double[][] arr) {
 		if (arr == null || arr.length == 0 || arr[0].length == 0) {
-			throw new IllegalArgumentException("Ref is null or no elements in the array!");
+			throw new IllegalArgumentException("No elements in the array!");
 		}
 	}
 }
