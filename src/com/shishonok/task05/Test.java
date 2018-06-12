@@ -54,9 +54,10 @@ public class Test {
 		// Test findFirstLocalMaximumIndex
 		View.println("First local maximum at position " + findFirstLocalMaximumIndex(arr));
 		// Test reverse
-		View.println("Reversed array = " + Arrays.toString(reverse(arr)));
+		reverse(arr);
+		View.println("Reversed array = " + Arrays.toString(arr));
 		// Test checkAscending and checkDescending
-		arr = ArrayWorker.sortInsert(arr, new Random().nextBoolean());
+		sortInsert(arr, new Random().nextBoolean());
 		View.println("Array after sorting = " + Arrays.toString(arr));
 		View.println("Is ascendig order? - " + checkAscending(arr));
 		View.println("is descending order? - " + checkDescending(arr));

@@ -151,8 +151,8 @@ public class ArrayWorker {
 		if (arr == null || arr.length < 3) {
 			return -1;
 		}
-
-		for (int i = 1; i < arr.length - 1; i++) {
+		int endLoop = arr.length - 1;
+		for (int i = 1; i < endLoop; i++) {
 			if (arr[i - 1] > arr[i] && arr[i] < arr[i + 1]) {
 				return i;
 			}
@@ -172,8 +172,8 @@ public class ArrayWorker {
 		if (arr == null || arr.length < 3) {
 			return -1;
 		}
-
-		for (int i = 1; i < arr.length - 1; i++) {
+		int endLoop = arr.length - 1;
+		for (int i = 1; i < endLoop; i++) {
 			if (arr[i - 1] < arr[i] && arr[i] > arr[i + 1]) {
 				return i;
 			}
@@ -188,18 +188,17 @@ public class ArrayWorker {
 	 *            source array
 	 * @return reversed array
 	 */
-	public static int[] reverse(int[] arr) {
+	public static void reverse(int[] arr) {
 		/// Check if reference is null or array have less two elements
 		if (arr == null || arr.length < 2) {
-			return arr;
+			return;
 		}
-
-		for (int i = 0; i < arr.length / 2; i++) {
+		int endLoop = arr.length / 2;
+		for (int i = 0; i < endLoop; i++) {
 			arr[i] ^= arr[arr.length - 1 - i];
 			arr[arr.length - 1 - i] ^= arr[i];
 			arr[i] ^= arr[arr.length - 1 - i];
 		}
-		return arr;
 	}
 
 	/**
@@ -211,22 +210,20 @@ public class ArrayWorker {
 	 *            sort order true - ascending, false - descending
 	 * @return sorted array
 	 */
-	public static int[] sortInsert(int[] arr, boolean isAcsend) {
+	public static void sortInsert(int[] arr, boolean isAcsend) {
 		/// Check if reference is null or array have less two elements
 		if (arr == null || arr.length < 2) {
-			return arr;
+			return;
 		}
 		int temp, j;
 		for (int i = 1; i < arr.length; i++) {
 			temp = arr[i];
 			j = i;
-			while (isAcsend ? j > 0 && arr[j - 1] >= temp
-					: j > 0 && arr[j - 1] <= temp) {
+			while (isAcsend ? j > 0 && arr[j - 1] >= temp : j > 0 && arr[j - 1] <= temp) {
 				arr[j] = arr[j - 1];
 				j--;
 			}
 			arr[j] = temp;
 		}
-		return arr;
 	}
 }
