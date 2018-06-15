@@ -2,12 +2,18 @@ package com.shishonok.task07.entity;
 
 import com.shishonok.task07.utility.RailcarList;
 
+/**
+ * To model the train with locomotive and a number of railcars.
+ * 
+ * @version 1 15.06.2018
+ * @author Alexander Shishonok
+ */
 public class Train {
 
     private long id;
     private String name;
     private Locomotive locomotive;
-    private RailcarList railcarList;
+    private RailcarList railcars;
 
     public Train() {
     }
@@ -17,7 +23,7 @@ public class Train {
 	this.id = id;
 	this.name = name;
 	this.locomotive = locomotive;
-	this.railcarList = railcarList;
+	this.railcars = railcarList;
     }
 
     public long getId() {
@@ -45,22 +51,54 @@ public class Train {
     }
 
     public RailcarList getRailcarList() {
-	return railcarList;
+	return railcars;
     }
 
     public void setRailcarList(RailcarList railcarList) {
-	this.railcarList = railcarList;
+	this.railcars = railcarList;
     }
 
-    public boolean addRailcar(Railcar rc) {
-	return false;
+    @Override
+    public int hashCode() {
+	final int prime = 31;
+	int result = 1;
+	result = prime * result + (int) (id ^ (id >>> 32));
+	result = prime * result
+		+ ((locomotive == null) ? 0 : locomotive.hashCode());
+	result = prime * result + ((name == null) ? 0 : name.hashCode());
+	return result;
     }
 
-    public boolean removeLastRailcar(Railcar rc) {
-	return false;
+    @Override
+    public boolean equals(Object obj) {
+	if (this == obj)
+	    return true;
+	if (obj == null)
+	    return false;
+	if (getClass() != obj.getClass())
+	    return false;
+	Train other = (Train) obj;
+	if (id != other.id)
+	    return false;
+	if (locomotive == null) {
+	    if (other.locomotive != null)
+		return false;
+	} else if (!locomotive.equals(other.locomotive))
+	    return false;
+	if (name == null) {
+	    if (other.name != null)
+		return false;
+	} else if (!name.equals(other.name))
+	    return false;
+	return true;
     }
 
-    public boolean changeLocomotive(Locomotive l) {
-	return false;
+    @Override
+    public String toString() {
+	return "Train [id=" + id + ", "
+		+ (name != null ? "name=" + name + ", " : "")
+		+ (locomotive != null ? "locomotive=" + locomotive + ", " : "")
+		+ (railcars != null ? "railcarList=" + railcars : "") + "]";
     }
+
 }

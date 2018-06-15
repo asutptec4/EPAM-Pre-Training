@@ -24,5 +24,5 @@ public interface IList<T> {
 
     public void clear();
 
-    public boolean contains(T el);
+    public int contains(T el);
 }
