@@ -19,6 +19,11 @@ public class CargoRailcar extends Railcar {
 	super(id, model, length, weight, maxLoadWeight);
     }
 
+    public CargoRailcar(CargoRailcar crc) {
+	super(crc.getId(), crc.getModel(), crc.getLength(), crc.getWeight(),
+		crc.getMaxLoadWeight());
+    }
+
     public String getCargoName() {
 	return cargoName;
     }
@@ -28,11 +33,11 @@ public class CargoRailcar extends Railcar {
     }
 
     public double getCurrentWeight() {
-        return currentWeight;
+	return currentWeight;
     }
 
     public void setCurrentWeight(double currentWeight) {
-        this.currentWeight = currentWeight;
+	this.currentWeight = currentWeight;
     }
 
     @Override
@@ -70,13 +75,12 @@ public class CargoRailcar extends Railcar {
     @Override
     public String toString() {
 	StringBuilder builder = new StringBuilder();
-	builder.append("CargoRailcar [id=").append(getId())
-		.append(", model=").append(getModel()).append(", length=")
-		.append(getLength()).append(", weight=").append(getWeight())
+	builder.append("CargoRailcar [id=").append(getId()).append(", model=")
+		.append(getModel()).append(", length=").append(getLength())
+		.append(", weight=").append(getWeight())
 		.append(", maxLoadWeight()=").append(getMaxLoadWeight())
 		.append(", cargoName=").append(cargoName)
-		.append(", currentWeight=").append(currentWeight)
-		.append("]");
+		.append(", currentWeight=").append(currentWeight).append("]");
 	return builder.toString();
     }
 }

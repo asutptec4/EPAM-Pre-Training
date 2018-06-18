@@ -22,6 +22,12 @@ public class TrainCompany {
 	this.name = name;
 	this.trainPark = trainPark;
     }
+    
+    public TrainCompany(TrainCompany tc) {
+  	this.id = tc.getId();
+  	this.name = tc.getName();
+  	this.trainPark = tc.getTrainPark();
+      }
 
     public long getId() {
 	return id;

@@ -21,6 +21,12 @@ public class TankRailcar extends Railcar {
 	this.tankVolume = tankVolume;
     }
 
+    public TankRailcar(TankRailcar trc) {
+	super(trc.getId(), trc.getModel(), trc.getLength(), trc.getWeight(),
+		trc.getMaxLoadWeight());
+	this.tankVolume = trc.getTankVolume();
+    }
+
     public String getCargoName() {
 	return cargoName;
     }

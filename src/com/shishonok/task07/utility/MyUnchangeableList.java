@@ -33,7 +33,7 @@ public class MyUnchangeableList<T> implements IList<T> {
 
     @Override
     public boolean add(T[] el) {
-	if (maxElementIndex - currentIndex <= el.length) {
+	if (maxElementIndex - currentIndex >= el.length) {
 	    for (int i = 0; i < el.length; i++) {
 		array[currentIndex++] = el[i];
 	    }
@@ -56,6 +56,7 @@ public class MyUnchangeableList<T> implements IList<T> {
 	}
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public T get(int index) {
 	if (index < 0 || index >= currentIndex) {
@@ -63,7 +64,8 @@ public class MyUnchangeableList<T> implements IList<T> {
 	}
 	return (T) array[index];
     }
-
+    
+    @SuppressWarnings("unchecked")
     @Override
     public T remove(int index) {
 	if (index < 0 || index >= currentIndex) {

@@ -24,6 +24,13 @@ public abstract class RollingStock {
 	this.weight = weight;
     }
 
+    public RollingStock(RollingStock rs) {
+	this.id = rs.getId();
+	this.model = rs.getModel();
+	this.length = rs.getLength();
+	this.weight = rs.getWeight();
+    }
+
     public long getId() {
 	return id;
     }

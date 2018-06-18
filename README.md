@@ -13,6 +13,4 @@ Task05 - One-Dimensional Arrays
 
 Task06 - Multidimensional Arrays
 
-Add Task07 - OOP without console app
-todo app and tests
-
+Add Task07 - OOP

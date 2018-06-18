@@ -17,6 +17,10 @@ public class TrainCompanyManager {
 	}
 	return tc.getTrainPark().add(train);
     }
+    
+    public int countTrains() {
+	return tc.getTrainPark().size();
+    }
 
     public boolean removeTrainById(long id) {
 	int endLoop = tc.getTrainPark().size();

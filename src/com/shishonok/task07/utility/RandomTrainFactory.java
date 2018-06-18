@@ -8,6 +8,7 @@ import com.shishonok.task07.model.entity.PassangerRailcar;
 import com.shishonok.task07.model.entity.Railcar;
 import com.shishonok.task07.model.entity.TankRailcar;
 import com.shishonok.task07.model.entity.Train;
+import com.shishonok.task07.utility.interfaces.IList;
 
 public class RandomTrainFactory {
     // setting for random creation of train
@@ -45,7 +46,7 @@ public class RandomTrainFactory {
 	train.setId(getId());
 	train.setLocomotive(createLocomotive());
 	int railcarNumber = random.nextInt(NUMBER_OF_VALUE) + NUMBER_OF_VALUE;
-	MyUnchangeableList<Railcar> railcars = new MyUnchangeableList<Railcar>(
+	IList<Railcar> railcars = new MyUnchangeableList<Railcar>(
 		railcarNumber);
 	for (int i = 0; i < railcarNumber; i++) {
 	    if (type == PASSANGER_TYPE) {

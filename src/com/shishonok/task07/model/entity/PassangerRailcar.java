@@ -20,6 +20,12 @@ public class PassangerRailcar extends Railcar {
 	this.maxPassanger = maxPassanger;
     }
 
+    public PassangerRailcar(PassangerRailcar prc) {
+	super(prc.getId(), prc.getModel(), prc.getLength(), prc.getWeight(),
+		prc.getMaxLoadWeight());
+	this.maxPassanger = prc.getMaxPassanger();
+    }
+
     public int getMaxPassanger() {
 	return maxPassanger;
     }

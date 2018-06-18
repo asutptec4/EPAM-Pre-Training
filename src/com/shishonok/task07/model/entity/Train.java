@@ -24,6 +24,12 @@ public class Train {
 	this.railcarList = railcarList;
     }
 
+    public Train(Train train) {
+	this.id = train.getId();
+	this.locomotive = train.getLocomotive();
+	this.railcarList = train.getRailcarList();
+    }
+    
     public long getId() {
 	return id;
     }
@@ -83,7 +89,7 @@ public class Train {
 	builder.append("Train [id=").append(id).append(", locomotive=")
 		.append(locomotive).append(", railcars=");
 	for (int i = 0; i < railcarList.size(); i++) {
-	    builder.append(" [" + i + "] ");
+	    builder.append("\n [" + i + "] ");
 	    builder.append(railcarList.get(i));
 	}
 	builder.append("]");

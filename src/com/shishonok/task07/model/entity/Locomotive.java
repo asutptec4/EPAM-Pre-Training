@@ -26,6 +26,14 @@ public class Locomotive extends RollingStock {
 	this.maxLoadCapasity = maxLoadCapasity;
     }
 
+    public Locomotive(Locomotive lm) {
+	super(lm.getId(), lm.getModel(), lm.getLength(), lm.getWeight());
+	this.engineType = lm.getEngineType();
+	this.enginePower = lm.getEnginePower();
+	this.maxSpeed = lm.getMaxSpeed();
+	this.maxLoadCapasity = lm.getMaxLoadCapasity();
+    }
+
     public String getEngineType() {
 	return engineType;
     }
@@ -101,12 +109,10 @@ public class Locomotive extends RollingStock {
     @Override
     public String toString() {
 	StringBuilder builder = new StringBuilder();
-	builder.append("Locomotive [id=").append(getId())
-		.append(", model=").append(getModel())
-		.append(", length=").append(getLength())
-		.append(", weight=").append(getWeight())
-		.append(", engineType=").append(engineType)
-		.append(", enginePower=").append(enginePower)
+	builder.append("Locomotive [id=").append(getId()).append(", model=")
+		.append(getModel()).append(", length=").append(getLength())
+		.append(", weight=").append(getWeight()).append(", engineType=")
+		.append(engineType).append(", enginePower=").append(enginePower)
 		.append(", maxSpeed=").append(maxSpeed)
 		.append(", maxLoadCapasity=").append(maxLoadCapasity)
 		.append("]");

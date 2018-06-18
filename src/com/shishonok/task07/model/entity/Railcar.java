@@ -20,6 +20,11 @@ public abstract class Railcar extends RollingStock {
 	this.maxLoadWeight = maxLoadWeight;
     }
 
+    public Railcar(Railcar rc) {
+	super(rc.getId(), rc.getModel(), rc.getLength(), rc.getWeight());
+	this.maxLoadWeight = rc.getMaxLoadWeight();
+    }
+
     public double getMaxLoadWeight() {
 	return maxLoadWeight;
     }
