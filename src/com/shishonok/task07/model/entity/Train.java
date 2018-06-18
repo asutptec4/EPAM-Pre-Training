@@ -1,6 +1,6 @@
-package com.shishonok.task07.entity;
+package com.shishonok.task07.model.entity;
 
-import com.shishonok.task07.utility.RailcarList;
+import com.shishonok.task07.utility.interfaces.IList;
 
 /**
  * To model the train with locomotive and a number of railcars.
@@ -11,19 +11,17 @@ import com.shishonok.task07.utility.RailcarList;
 public class Train {
 
     private long id;
-    private String name;
     private Locomotive locomotive;
-    private RailcarList railcars;
+    private IList<Railcar> railcarList;
 
     public Train() {
     }
 
-    public Train(long id, String name, Locomotive locomotive,
-	    RailcarList railcarList) {
+    public Train(long id, Locomotive locomotive,
+	    IList<Railcar> railcarList) {
 	this.id = id;
-	this.name = name;
 	this.locomotive = locomotive;
-	this.railcars = railcarList;
+	this.railcarList = railcarList;
     }
 
     public long getId() {
@@ -34,14 +32,6 @@ public class Train {
 	this.id = id;
     }
 
-    public String getName() {
-	return name;
-    }
-
-    public void setName(String name) {
-	this.name = name;
-    }
-
     public Locomotive getLocomotive() {
 	return locomotive;
     }
@@ -50,12 +40,12 @@ public class Train {
 	this.locomotive = locomotive;
     }
 
-    public RailcarList getRailcarList() {
-	return railcars;
+    public IList<Railcar> getRailcarList() {
+	return railcarList;
     }
 
-    public void setRailcarList(RailcarList railcarList) {
-	this.railcars = railcarList;
+    public void setRailcarList(IList<Railcar> railcarList) {
+	this.railcarList = railcarList;
     }
 
     @Override
@@ -65,7 +55,6 @@ public class Train {
 	result = prime * result + (int) (id ^ (id >>> 32));
 	result = prime * result
 		+ ((locomotive == null) ? 0 : locomotive.hashCode());
-	result = prime * result + ((name == null) ? 0 : name.hashCode());
 	return result;
     }
 
@@ -85,20 +74,20 @@ public class Train {
 		return false;
 	} else if (!locomotive.equals(other.locomotive))
 	    return false;
-	if (name == null) {
-	    if (other.name != null)
-		return false;
-	} else if (!name.equals(other.name))
-	    return false;
 	return true;
     }
 
     @Override
     public String toString() {
-	return "Train [id=" + id + ", "
-		+ (name != null ? "name=" + name + ", " : "")
-		+ (locomotive != null ? "locomotive=" + locomotive + ", " : "")
-		+ (railcars != null ? "railcarList=" + railcars : "") + "]";
+	StringBuilder builder = new StringBuilder();
+	builder.append("Train [id=").append(id).append(", locomotive=")
+		.append(locomotive).append(", railcars=");
+	for (int i = 0; i < railcarList.size(); i++) {
+	    builder.append(" [" + i + "] ");
+	    builder.append(railcarList.get(i));
+	}
+	builder.append("]");
+	return builder.toString();
     }
 
 }

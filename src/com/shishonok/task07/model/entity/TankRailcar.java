@@ -1,22 +1,24 @@
-package com.shishonok.task07.entity;
+package com.shishonok.task07.model.entity;
 
 /**
- * Railcar used for the carrying cargo.
+ * Railcar used for the carrying liquid cargo.
  * 
  * @version 1 14.06.2018
  * @author Alexander Shishonok
  */
-public class CargoRailcar extends Railcar {
+public class TankRailcar extends Railcar {
 
     private String cargoName;
     private double currentWeight;
+    private double tankVolume;
 
-    public CargoRailcar() {
+    public TankRailcar() {
     }
 
-    public CargoRailcar(long id, String model, double length, double weight,
-	    double maxLoadWeight) {
+    public TankRailcar(long id, String model, double length, double weight,
+	    double maxLoadWeight, double tankVolume) {
 	super(id, model, length, weight, maxLoadWeight);
+	this.tankVolume = tankVolume;
     }
 
     public String getCargoName() {
@@ -28,11 +30,19 @@ public class CargoRailcar extends Railcar {
     }
 
     public double getCurrentWeight() {
-        return currentWeight;
+	return currentWeight;
     }
 
     public void setCurrentWeight(double currentWeight) {
-        this.currentWeight = currentWeight;
+	this.currentWeight = currentWeight;
+    }
+
+    public double getTankVolume() {
+	return tankVolume;
+    }
+
+    public void setTankVolume(double tankVolume) {
+	this.tankVolume = tankVolume;
     }
 
     @Override
@@ -43,6 +53,8 @@ public class CargoRailcar extends Railcar {
 		+ ((cargoName == null) ? 0 : cargoName.hashCode());
 	long temp;
 	temp = Double.doubleToLongBits(currentWeight);
+	result = prime * result + (int) (temp ^ (temp >>> 32));
+	temp = Double.doubleToLongBits(tankVolume);
 	result = prime * result + (int) (temp ^ (temp >>> 32));
 	return result;
     }
@@ -55,7 +67,7 @@ public class CargoRailcar extends Railcar {
 	    return false;
 	if (getClass() != obj.getClass())
 	    return false;
-	CargoRailcar other = (CargoRailcar) obj;
+	TankRailcar other = (TankRailcar) obj;
 	if (cargoName == null) {
 	    if (other.cargoName != null)
 		return false;
@@ -64,14 +76,22 @@ public class CargoRailcar extends Railcar {
 	if (Double.doubleToLongBits(currentWeight) != Double
 		.doubleToLongBits(other.currentWeight))
 	    return false;
+	if (Double.doubleToLongBits(tankVolume) != Double
+		.doubleToLongBits(other.tankVolume))
+	    return false;
 	return true;
     }
 
     @Override
     public String toString() {
-	return "CargoRailcar [ " + super.toString()
-		+ (cargoName != null ? "cargoName=" + cargoName + ", " : "")
-		+ "currentWeight=" + currentWeight + "]";
+	StringBuilder builder = new StringBuilder();
+	builder.append("TankRailcar [id=").append(getId()).append(", model=")
+		.append(getModel()).append(", length=").append(getLength())
+		.append(", weight=").append(getWeight())
+		.append(", maxLoadWeight()=").append(getMaxLoadWeight())
+		.append(", cargoName=").append(cargoName)
+		.append(", currentWeight=").append(currentWeight)
+		.append(", tankVolume=").append(tankVolume).append("]");
+	return builder.toString();
     }
-
 }

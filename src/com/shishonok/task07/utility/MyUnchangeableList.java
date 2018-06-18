@@ -1,33 +1,29 @@
 package com.shishonok.task07.utility;
 
-import com.shishonok.task07.entity.Railcar;
 import com.shishonok.task07.utility.interfaces.IList;
 
-/**
- * Container for Railcar class element.
- * 
- * @version 1 15.06.2018
- * @author Alexander Shishonok
- */
-public class RailcarList implements IList<Railcar> {
+public class MyUnchangeableList<T> implements IList<T> {
 
-    public static final int DEFAULT_MAX_SIZE = 8;
-    private Railcar[] array;
-    private int currentIndex;
-    private int maxElementIndex;
+    protected static final int DEFAULT_INIT_SIZE = 8;
+    protected Object[] array;
+    protected int currentIndex;
+    protected int maxElementIndex;
 
-    public RailcarList() {
-	this(DEFAULT_MAX_SIZE);
+    public MyUnchangeableList() {
+	this(DEFAULT_INIT_SIZE);
     }
 
-    public RailcarList(int maxElementIndex) {
+    public MyUnchangeableList(int maxElementIndex) {
+	if (maxElementIndex < 1) {
+	    throw new IllegalArgumentException();
+	}
 	this.maxElementIndex = maxElementIndex;
-	array = new Railcar[maxElementIndex];
-	currentIndex = 0;
+	this.array = new Object[this.maxElementIndex];
+	this.currentIndex = 0;
     }
 
     @Override
-    public boolean add(Railcar el) {
+    public boolean add(T el) {
 	if (currentIndex < maxElementIndex) {
 	    array[currentIndex++] = el;
 	    return true;
@@ -36,7 +32,7 @@ public class RailcarList implements IList<Railcar> {
     }
 
     @Override
-    public boolean add(Railcar[] el) {
+    public boolean add(T[] el) {
 	if (maxElementIndex - currentIndex <= el.length) {
 	    for (int i = 0; i < el.length; i++) {
 		array[currentIndex++] = el[i];
@@ -61,19 +57,19 @@ public class RailcarList implements IList<Railcar> {
     }
 
     @Override
-    public Railcar get(int index) {
+    public T get(int index) {
 	if (index < 0 || index >= currentIndex) {
 	    throw new IndexOutOfBoundsException();
 	}
-	return array[index];
+	return (T) array[index];
     }
 
     @Override
-    public Railcar remove(int index) {
+    public T remove(int index) {
 	if (index < 0 || index >= currentIndex) {
 	    throw new IndexOutOfBoundsException();
 	}
-	Railcar temp = null;
+	Object temp = null;
 	int endLoop = currentIndex - 1;
 	for (int i = index; i < endLoop; i++) {
 	    temp = array[i];
@@ -82,17 +78,17 @@ public class RailcarList implements IList<Railcar> {
 	}
 	temp = array[--currentIndex];
 	array[currentIndex] = null;
-	return temp;
+	return (T) temp;
     }
 
     @Override
     public void clear() {
-	array = new Railcar[maxElementIndex];
+	array = new Object[maxElementIndex];
 	currentIndex = 0;
     }
 
     @Override
-    public int contains(Railcar el) {
+    public int contains(T el) {
 	for (int i = 0; i < currentIndex; i++) {
 	    if (el.equals(array[i])) {
 		return i;
@@ -101,24 +97,24 @@ public class RailcarList implements IList<Railcar> {
 	return -1;
     }
 
-    public Railcar[] findByMaxLoad(double maxLoad) {
-	int count = 0;
-	for (Railcar el : array) {
-	    if (el.getMaxLoadWeight() == maxLoad) {
-		count++;
-	    }
-	}
-	if (count != 0) {
-	    Railcar[] railcars = new Railcar[count];
-	    int i = 0;
-	    for (Railcar el : array) {
-		if (el.getMaxLoadWeight() == maxLoad) {
-		    railcars[i++] = el;
-		}
-	    }
-	    return railcars;
-	} else {
-	    return null;
-	}
-    }
+//    public T[] findBy(Function<T, Boolean> func) {
+//	int count = 0;
+//	for (int i = 0; i < currentIndex; i++) {
+//	    if (func.apply((T) array[i])) {
+//		count++;
+//	    }
+//	}
+//	if (count != 0) {
+//	    Object[] temp = new Object[count];
+//	    int j = 0;
+//	    for (int i = 0; i < currentIndex; i++) {
+//		if (func.apply((T) array[i])) {
+//		    temp[j++] = (T) array[i];
+//		}
+//	    }
+//	    return (T[]) temp;
+//	} else {
+//	    return null;
+//	}
+//    }
 }

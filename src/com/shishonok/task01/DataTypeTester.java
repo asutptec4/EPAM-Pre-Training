@@ -5,6 +5,7 @@ package com.shishonok.task01;
  * @author Alexander Shishonok
  *
  */
+@SuppressWarnings("all")
 public class DataTypeTester {
 	
 	private static final String ERROR_COMP_STR = "Compilation error: operator undefined for the argument type";

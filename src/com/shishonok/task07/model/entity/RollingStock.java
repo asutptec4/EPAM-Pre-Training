@@ -1,4 +1,4 @@
-package com.shishonok.task07.entity;
+package com.shishonok.task07.model.entity;
 
 /**
  * Class represent basic attributes of railway vehicle
@@ -97,7 +97,11 @@ public abstract class RollingStock {
 
     @Override
     public String toString() {
-	return "[id=" + id + ", model=" + model + ", length=" + length
-		+ ", weight=" + weight + "]";
+	StringBuilder builder = new StringBuilder();
+	builder.append("RollingStock [id=").append(id).append(", model=")
+		.append(model).append(", length=").append(length)
+		.append(", weight=").append(weight).append("]");
+	return builder.toString();
     }
+
 }

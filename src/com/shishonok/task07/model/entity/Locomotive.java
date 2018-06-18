@@ -1,4 +1,4 @@
-package com.shishonok.task07.entity;
+package com.shishonok.task07.model.entity;
 
 /**
  * Class represent railway vehicle that provides the motive power for a train.
@@ -100,9 +100,17 @@ public class Locomotive extends RollingStock {
 
     @Override
     public String toString() {
-	return "Locomotive [ " + super.toString() + " engineType=" + engineType
-		+ ", enginePower=" + enginePower + ", maxSpeed=" + maxSpeed
-		+ ", maxLoadCapasity=" + maxLoadCapasity + "]";
+	StringBuilder builder = new StringBuilder();
+	builder.append("Locomotive [id=").append(getId())
+		.append(", model=").append(getModel())
+		.append(", length=").append(getLength())
+		.append(", weight=").append(getWeight())
+		.append(", engineType=").append(engineType)
+		.append(", enginePower=").append(enginePower)
+		.append(", maxSpeed=").append(maxSpeed)
+		.append(", maxLoadCapasity=").append(maxLoadCapasity)
+		.append("]");
+	return builder.toString();
     }
 
 }

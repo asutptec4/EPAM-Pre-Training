@@ -1,4 +1,4 @@
-package com.shishonok.task07.entity;
+package com.shishonok.task07.model.entity;
 
 /**
  * Railcar used for the carrying passengers.
@@ -63,8 +63,15 @@ public class PassangerRailcar extends Railcar {
 
     @Override
     public String toString() {
-	return "PassangerRailcar [ " + super.toString() + " maxPassanger="
-		+ maxPassanger + ", numberPassangers=" + numberPassangers + "]";
+	StringBuilder builder = new StringBuilder();
+	builder.append("PassangerRailcar [id=").append(getId())
+		.append(", model=").append(getModel()).append(", length=")
+		.append(getLength()).append(", weight=").append(getWeight())
+		.append(", maxLoadWeight()=").append(getMaxLoadWeight())
+		.append(", maxPassanger=").append(maxPassanger)
+		.append(", numberPassangers=").append(numberPassangers)
+		.append("]");
+	return builder.toString();
     }
 
 }

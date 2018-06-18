@@ -1,4 +1,4 @@
-package com.shishonok.task07.entity;
+package com.shishonok.task07.model.entity;
 
 /**
  * Class represent railway vehicle that used for the carrying of cargo or
@@ -55,8 +55,12 @@ public abstract class Railcar extends RollingStock {
 
     @Override
     public String toString() {
-	return "Railcar [ " + super.toString() + " maxLoadWeight="
-		+ maxLoadWeight + "]";
+	StringBuilder builder = new StringBuilder();
+	builder.append("Railcar [id=").append(getId()).append(", model=")
+		.append(getModel()).append(", length=").append(getLength())
+		.append(", weight=").append(getWeight())
+		.append(", maxLoadWeight=").append(maxLoadWeight).append("]");
+	return builder.toString();
     }
 
 }

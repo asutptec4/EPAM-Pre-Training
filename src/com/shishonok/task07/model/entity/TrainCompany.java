@@ -1,6 +1,6 @@
-package com.shishonok.task07.entity;
+package com.shishonok.task07.model.entity;
 
-import com.shishonok.task07.utility.TrainList;
+import com.shishonok.task07.utility.interfaces.IList;
 
 /**
  * Simple model of a company that has several train.
@@ -9,42 +9,42 @@ import com.shishonok.task07.utility.TrainList;
  * @author Alexander Shishonok
  */
 public class TrainCompany {
-    
+
     private long id;
     private String name;
-    private TrainList trainPark;
+    private IList<Train> trainPark;
 
     public TrainCompany() {
     }
 
-    public TrainCompany(long id, String name, TrainList trainPark) {
+    public TrainCompany(long id, String name, IList<Train> trainPark) {
 	this.id = id;
 	this.name = name;
 	this.trainPark = trainPark;
     }
-    
+
     public long getId() {
-        return id;
+	return id;
     }
 
     public void setId(long id) {
-        this.id = id;
+	this.id = id;
     }
 
     public String getName() {
-        return name;
+	return name;
     }
 
     public void setName(String name) {
-        this.name = name;
+	this.name = name;
     }
 
-    public TrainList getTrainPark() {
-        return trainPark;
+    public IList<Train> getTrainPark() {
+	return trainPark;
     }
 
-    public void setTrainPark(TrainList trainPark) {
-        this.trainPark = trainPark;
+    public void setTrainPark(IList<Train> trainPark) {
+	this.trainPark = trainPark;
     }
 
     @Override
@@ -77,8 +77,10 @@ public class TrainCompany {
 
     @Override
     public String toString() {
-	return "TrainCompany [id=" + id + ", "
-		+ (name != null ? "name=" + name + ", " : "")
-		+ (trainPark != null ? "trainPark=" + trainPark : "") + "]";
-    }    
+	StringBuilder builder = new StringBuilder();
+	builder.append("TrainCompany [id=").append(id).append(", name=")
+		.append(name).append("]");
+	return builder.toString();
+    }
+
 }
