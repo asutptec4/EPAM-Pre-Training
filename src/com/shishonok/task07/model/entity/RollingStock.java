@@ -6,7 +6,7 @@ package com.shishonok.task07.model.entity;
  * @version 1 14.06.2018
  * @author Alexander Shishonok
  */
-public abstract class RollingStock {
+public class RollingStock {
 
     private long id;
     private String model;

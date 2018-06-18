@@ -5,24 +5,18 @@ import com.shishonok.task07.model.entity.TrainCompany;
 
 public class TrainCompanyManager {
 
-    private TrainCompany tc;
-
-    public TrainCompanyManager(TrainCompany tc) {
-	this.tc = tc;
-    }
-
-    public boolean addTrain(Train train) {
+    public static boolean addTrain(TrainCompany tc, Train train) {
 	if (train == null) {
 	    return false;
 	}
 	return tc.getTrainPark().add(train);
     }
-    
-    public int countTrains() {
+
+    public static int countTrains(TrainCompany tc) {
 	return tc.getTrainPark().size();
     }
 
-    public boolean removeTrainById(long id) {
+    public static boolean removeTrainById(TrainCompany tc, long id) {
 	int endLoop = tc.getTrainPark().size();
 	for (int i = 0; i < endLoop; i++) {
 	    if (tc.getTrainPark().get(i).getId() == id) {
@@ -33,7 +27,7 @@ public class TrainCompanyManager {
 	return false;
     }
 
-    public Train findLargestTrain() {
+    public static Train findLargestTrain(TrainCompany tc) {
 	// TODO: add check by null list
 	Train temp = tc.getTrainPark().get(0);
 	int endLoop = tc.getTrainPark().size();
@@ -47,7 +41,7 @@ public class TrainCompanyManager {
 	return temp;
     }
 
-    public Train findSmallestTrain() {
+    public static Train findSmallestTrain(TrainCompany tc) {
 	// TODO: add check by null list
 	Train temp = tc.getTrainPark().get(0);
 	int endLoop = tc.getTrainPark().size();

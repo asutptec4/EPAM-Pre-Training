@@ -15,24 +15,22 @@ public class TrainCompanyController {
 	TrainCompany tc = new TrainCompany(1, "Bests train",
 		new MyChangeableList<Train>());
 	RandomTrainFactory factory = new RandomTrainFactory();
-	TrainCompanyManager manager = new TrainCompanyManager(tc);
 	int numberOfTrain = new Random().nextInt(20) + 1;
 	for (int i = 0; i < numberOfTrain; i++) {
-	    manager.addTrain(factory.createTrain());
+	    TrainCompanyManager.addTrain(tc, factory.createTrain());
 	}
 	TrainCompany tc2 = new TrainCompany(2, "Fast train",
 		new MyUnchangeableList<>());
-	TrainCompanyManager manager2 = new TrainCompanyManager(tc2);
 	for (int i = 0; i < numberOfTrain; i++) {
-	    manager2.addTrain(factory.createTrain());
+	    TrainCompanyManager.addTrain(tc, factory.createTrain());
 	}
 	View.println("Total count trains in " + tc.getName() + " is "
-		+ manager.countTrains());
+		+ TrainCompanyManager.countTrains(tc));
 	View.println("Total count trains in " + tc2.getName() + " is "
-		+ manager2.countTrains());
+		+ TrainCompanyManager.countTrains(tc));
 	View.println("Largest train in " + tc.getName() + " is id="
-		+ manager.findLargestTrain().getId());
+		+ TrainCompanyManager.findLargestTrain(tc).getId());
 	View.println("Smallest train in " + tc.getName() + " is id="
-		+ manager.findSmallestTrain().getId());
+		+ TrainCompanyManager.findSmallestTrain(tc).getId());
     }
 }

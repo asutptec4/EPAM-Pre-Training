@@ -7,7 +7,7 @@ package com.shishonok.task07.model.entity;
  * @version 1 14.06.2018
  * @author Alexander Shishonok
  */
-public abstract class Railcar extends RollingStock {
+public class Railcar extends RollingStock {
 
     private double maxLoadWeight;
 
