@@ -1,6 +1,6 @@
 package com.shishonok.task07.model.entity;
 
-import com.shishonok.task07.utility.interfaces.IList;
+import com.shishonok.task07.model.util.interfaces.IList;
 
 /**
  * Simple model of a company that has several train.

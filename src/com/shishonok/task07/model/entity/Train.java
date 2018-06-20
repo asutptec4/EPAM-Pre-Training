@@ -1,6 +1,6 @@
 package com.shishonok.task07.model.entity;
 
-import com.shishonok.task07.utility.interfaces.IList;
+import com.shishonok.task07.model.util.interfaces.IList;
 
 /**
  * To model the train with locomotive and a number of railcars.

@@ -1,7 +1,15 @@
-package com.shishonok.task07.utility;
+package com.shishonok.task07.model.util;
 
-import com.shishonok.task07.utility.interfaces.IList;
+import com.shishonok.task07.model.util.interfaces.IList;
 
+/**
+ * Container class for working with <T> elements. Base on array. Have fix size,
+ * which set by instantiation.
+ * 
+ * @version 1 17.06.2018
+ * @author Alexander Shishonok
+ * 
+ */
 public class MyUnchangeableList<T> implements IList<T> {
 
     protected static final int DEFAULT_INIT_SIZE = 8;
@@ -64,7 +72,7 @@ public class MyUnchangeableList<T> implements IList<T> {
 	}
 	return (T) array[index];
     }
-    
+
     @SuppressWarnings("unchecked")
     @Override
     public T remove(int index) {
@@ -99,24 +107,24 @@ public class MyUnchangeableList<T> implements IList<T> {
 	return -1;
     }
 
-//    public T[] findBy(Function<T, Boolean> func) {
-//	int count = 0;
-//	for (int i = 0; i < currentIndex; i++) {
-//	    if (func.apply((T) array[i])) {
-//		count++;
-//	    }
-//	}
-//	if (count != 0) {
-//	    Object[] temp = new Object[count];
-//	    int j = 0;
-//	    for (int i = 0; i < currentIndex; i++) {
-//		if (func.apply((T) array[i])) {
-//		    temp[j++] = (T) array[i];
-//		}
-//	    }
-//	    return (T[]) temp;
-//	} else {
-//	    return null;
-//	}
-//    }
+    // public T[] findBy(Function<T, Boolean> func) {
+    // int count = 0;
+    // for (int i = 0; i < currentIndex; i++) {
+    // if (func.apply((T) array[i])) {
+    // count++;
+    // }
+    // }
+    // if (count != 0) {
+    // Object[] temp = new Object[count];
+    // int j = 0;
+    // for (int i = 0; i < currentIndex; i++) {
+    // if (func.apply((T) array[i])) {
+    // temp[j++] = (T) array[i];
+    // }
+    // }
+    // return (T[]) temp;
+    // } else {
+    // return null;
+    // }
+    // }
 }

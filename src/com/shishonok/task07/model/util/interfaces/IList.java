@@ -1,4 +1,4 @@
-package com.shishonok.task07.utility.interfaces;
+package com.shishonok.task07.model.util.interfaces;
 
 /**
  * The interface provides method for working with collection of elements

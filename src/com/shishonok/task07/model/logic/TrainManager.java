@@ -3,6 +3,7 @@ package com.shishonok.task07.model.logic;
 import com.shishonok.task07.model.entity.Locomotive;
 import com.shishonok.task07.model.entity.Railcar;
 import com.shishonok.task07.model.entity.Train;
+import com.shishonok.task07.model.exception.MissingRollingStockException;
 
 /**
  * Provide some methods for working with Train.
@@ -12,8 +13,12 @@ import com.shishonok.task07.model.entity.Train;
  */
 public class TrainManager {
 
-    // TODO: add check for all by null list or null locomotive
-    public static double evalTrainWeight(Train train) {
+    public static double evalTrainWeight(Train train)
+	    throws MissingRollingStockException {
+	if (train == null || train.getLocomotive() == null) {
+	    throw new MissingRollingStockException(
+		    MissingRollingStockException.NO_LOCOMOTIVE);
+	}
 	double result = 0;
 	int endLoop = train.getRailcarList().size();
 	for (int i = 0; i < endLoop; i++) {
@@ -22,7 +27,12 @@ public class TrainManager {
 	return result + train.getLocomotive().getWeight();
     }
 
-    public static double evalTrainLength(Train train) {
+    public static double evalTrainLength(Train train)
+	    throws MissingRollingStockException {
+	if (train == null || train.getLocomotive() == null) {
+	    throw new MissingRollingStockException(
+		    MissingRollingStockException.NO_LOCOMOTIVE);
+	}
 	double result = 0;
 	int endLoop = train.getRailcarList().size();
 	for (int i = 0; i < endLoop; i++) {
@@ -31,7 +41,12 @@ public class TrainManager {
 	return result + train.getLocomotive().getLength();
     }
 
-    public static double evalMaxTrainLoadCapacity(Train train) {
+    public static double evalMaxTrainLoadCapacity(Train train)
+	    throws MissingRollingStockException {
+	if (train == null || train.getRailcarList().size() == 0) {
+	    throw new MissingRollingStockException(
+		    MissingRollingStockException.NO_RAILCARS);
+	}
 	double result = 0;
 	int endLoop = train.getRailcarList().size();
 	for (int i = 0; i < endLoop; i++) {
@@ -40,11 +55,21 @@ public class TrainManager {
 	return result;
     }
 
-    public static boolean addRailcar(Train train, Railcar rc) {
+    public static boolean addRailcar(Train train, Railcar rc)
+	    throws MissingRollingStockException {
+	if (train == null || train.getLocomotive() == null) {
+	    throw new MissingRollingStockException(
+		    MissingRollingStockException.NO_LOCOMOTIVE);
+	}
 	return train.getRailcarList().add(rc);
     }
 
-    public static boolean removeLastRailcar(Train train) {
+    public static boolean removeLastRailcar(Train train)
+	    throws MissingRollingStockException {
+	if (train == null || train.getLocomotive() == null) {
+	    throw new MissingRollingStockException(
+		    MissingRollingStockException.NO_RAILCARS);
+	}
 	return train.getRailcarList()
 		.remove(train.getRailcarList().size() - 1) != null ? true
 			: false;

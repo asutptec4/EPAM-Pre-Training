@@ -1,4 +1,4 @@
-package com.shishonok.task07.utility;
+package com.shishonok.task07.util;
 
 import java.util.Random;
 
@@ -8,8 +8,17 @@ import com.shishonok.task07.model.entity.PassangerRailcar;
 import com.shishonok.task07.model.entity.Railcar;
 import com.shishonok.task07.model.entity.TankRailcar;
 import com.shishonok.task07.model.entity.Train;
-import com.shishonok.task07.utility.interfaces.IList;
+import com.shishonok.task07.model.util.MyUnchangeableList;
+import com.shishonok.task07.model.util.interfaces.IList;
 
+/**
+ * Class contain methods for random creation the instance of Train class and its
+ * component - instances of Locomotive and Railcar class.
+ * 
+ * @version 1 17.06.2018
+ * @author Alexander Shishonok
+ *
+ */
 public class RandomTrainFactory {
     // setting for random creation of train
     public static final int NUMBER_OF_VALUE = 10;

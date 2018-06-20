@@ -1,5 +1,13 @@
-package com.shishonok.task07.utility;
+package com.shishonok.task07.model.util;
 
+/**
+ * Container class for working with <T> elements. Base on array. Can dynamicly
+ * change size.
+ * 
+ * @version 1 17.06.2018
+ * @author Alexander Shishonok
+ * 
+ */
 public class MyChangeableList<T> extends MyUnchangeableList<T> {
 
     protected static final int DEFAULT_SIZE_MULTIPLIER = 2;

@@ -2,17 +2,18 @@ package com.shishonok.task07.test;
 
 import com.shishonok.task07.model.entity.Railcar;
 import com.shishonok.task07.model.entity.Train;
+import com.shishonok.task07.model.exception.MissingRollingStockException;
 import com.shishonok.task07.model.logic.TrainManager;
-import com.shishonok.task07.utility.MyChangeableList;
-import com.shishonok.task07.utility.MyUnchangeableList;
-import com.shishonok.task07.utility.RandomTrainFactory;
-import com.shishonok.task07.utility.interfaces.IList;
+import com.shishonok.task07.model.util.MyChangeableList;
+import com.shishonok.task07.model.util.MyUnchangeableList;
+import com.shishonok.task07.model.util.interfaces.IList;
+import com.shishonok.task07.util.RandomTrainFactory;
 import com.shishonok.task07.view.View;
 
 /**
  * Tests for task07.
  * 
- * @version 1 06.06.2018
+ * @version 1 17.06.2018
  * @author Alexander Shishonok
  * 
  */
@@ -61,13 +62,28 @@ public class Test {
 	View.println("Crate train:");
 	Train train = new Train(1, factory.createLocomotive(), railcarList);
 	View.println(train);
-	View.println("Sum length " + TrainManager.evalTrainLength(train));
-	View.println("Sum weight " + TrainManager.evalTrainWeight(train));
-	View.println(
-		"Sum capacity " + TrainManager.evalMaxTrainLoadCapacity(train));
-	//Remove last railcar
-	TrainManager.removeLastRailcar(train);
+	try {
+	    View.println("Sum length " + TrainManager.evalTrainLength(train));
+	    View.println("Sum weight " + TrainManager.evalTrainWeight(train));
+	    View.println("Sum capacity "
+		    + TrainManager.evalMaxTrainLoadCapacity(train));
+	} catch (MissingRollingStockException e) {
+	    View.println(e);
+	}
+	// Remove last railcar
+	try {
+	    TrainManager.removeLastRailcar(train);
+	} catch (MissingRollingStockException e) {
+	    View.println(e);
+	}
 	View.println(train);
+	// Test exception
+	train.setLocomotive(null);
+	try {
+	    TrainManager.addRailcar(train, rc);
+	} catch (MissingRollingStockException e) {
+	    View.println(e);
+	}
 	View.println("End test.");
     }
 }
