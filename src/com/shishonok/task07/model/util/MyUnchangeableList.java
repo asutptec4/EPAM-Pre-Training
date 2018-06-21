@@ -92,6 +92,14 @@ public class MyUnchangeableList<T> implements IList<T> {
     }
 
     @Override
+    public void swap(int i, int j) {
+	Object temp = array[i];
+	array[i] = array[j];
+	array[j] = temp;
+
+    }
+
+    @Override
     public void clear() {
 	array = new Object[maxElementIndex];
 	currentIndex = 0;
@@ -105,6 +113,16 @@ public class MyUnchangeableList<T> implements IList<T> {
 	    }
 	}
 	return -1;
+    }
+
+    @Override
+    public String toString() {
+	StringBuilder builder = new StringBuilder();
+	for (int i = 0; i < size(); i++) {
+	    builder.append("[").append(i).append("]-").append(array[i])
+		    .append("\n");
+	}
+	return builder.toString();
     }
 
     // public T[] findBy(Function<T, Boolean> func) {

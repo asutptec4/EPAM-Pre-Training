@@ -4,8 +4,10 @@ import java.util.Random;
 
 import com.shishonok.task07.model.entity.Train;
 import com.shishonok.task07.model.entity.TrainCompany;
+import com.shishonok.task07.model.exception.MissingRollingStockException;
 import com.shishonok.task07.model.exception.NoTrainsException;
 import com.shishonok.task07.model.logic.TrainCompanyManager;
+import com.shishonok.task07.model.logic.TrainSorter;
 import com.shishonok.task07.model.util.MyChangeableList;
 import com.shishonok.task07.util.RandomTrainFactory;
 import com.shishonok.task07.view.View;
@@ -15,7 +17,7 @@ public class TrainCompanyController {
 	TrainCompany tc = new TrainCompany(1, "Bests train",
 		new MyChangeableList<Train>());
 	RandomTrainFactory factory = new RandomTrainFactory();
-	int numberOfTrain = new Random().nextInt(20) + 1;
+	int numberOfTrain = new Random().nextInt(10) + 1;
 	for (int i = 0; i < numberOfTrain; i++) {
 	    TrainCompanyManager.addTrain(tc, factory.createTrain());
 	}
@@ -31,5 +33,11 @@ public class TrainCompanyController {
 	    e.printStackTrace();
 	}
 
+	try {
+	    TrainSorter.sortByLength(tc.getTrainPark());
+	} catch (MissingRollingStockException e) {
+	    e.printStackTrace();
+	}
+	View.println(tc.getTrainPark());
     }
 }

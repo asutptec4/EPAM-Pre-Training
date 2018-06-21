@@ -25,4 +25,6 @@ public interface IList<T> {
     public void clear();
 
     public int contains(T el);
+
+    public void swap(int i, int j);
 }
