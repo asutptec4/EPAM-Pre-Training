@@ -13,4 +13,6 @@ Task05 - One-Dimensional Arrays
 
 Task06 - Multidimensional Arrays
 
-Add Task07 - OOP
+Task07 - OOP with Exception, Sort and Serach Algoritms
+
+Task10 - Recursive Algorithms
