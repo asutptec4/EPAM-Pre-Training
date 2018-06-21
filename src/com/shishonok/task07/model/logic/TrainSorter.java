@@ -5,12 +5,15 @@ import com.shishonok.task07.model.exception.MissingRollingStockException;
 import com.shishonok.task07.model.util.interfaces.IList;
 
 /**
- * Use for sort train in container.
+ * Use for sort train by total length. 
+ * For sorting train by instance of train parameters use sort
+ * method provides by my collection.
  * 
- * @version 1 15.06.2018
+ * @version 1 21.06.2018
  * @author Alexander Shishonok
  */
 public class TrainSorter {
+
     public static void sortByLength(IList<Train> list)
 	    throws MissingRollingStockException {
 	if (list.size() < 2) {
@@ -30,4 +33,5 @@ public class TrainSorter {
 	    }
 	}
     }
+
 }

@@ -1,5 +1,7 @@
 package com.shishonok.task07.test;
 
+import java.util.Comparator;
+
 import com.shishonok.task07.model.entity.Railcar;
 import com.shishonok.task07.model.entity.Train;
 import com.shishonok.task07.model.exception.MissingRollingStockException;
@@ -84,6 +86,26 @@ public class Test {
 	} catch (MissingRollingStockException e) {
 	    View.println(e);
 	}
+	// Test sort
+	View.println("Collection before");
+	View.println(railcarList);
+	Comparator<Railcar> comparator = new Comparator<Railcar>() {
+	    @Override
+	    public int compare(Railcar o1, Railcar o2) {
+		if (o1.getLength() > o2.getLength()) {
+		    return 1;
+		} else if (o1.getLength() > o2.getLength()) {
+		    return 0;
+		} else {
+		    return -1;
+		}
+	    }
+	};
+	// railcarList.sortBubble(comparator);
+	// railcarList.sortInsert(comparator);
+	railcarList.sortSelection(comparator);
+	View.println("Collection after");
+	View.println(railcarList);
 	View.println("End test.");
     }
 }

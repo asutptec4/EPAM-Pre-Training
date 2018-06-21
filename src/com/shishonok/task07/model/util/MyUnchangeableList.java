@@ -1,5 +1,7 @@
 package com.shishonok.task07.model.util;
 
+import java.util.Comparator;
+
 import com.shishonok.task07.model.util.interfaces.IList;
 
 /**
@@ -113,6 +115,57 @@ public class MyUnchangeableList<T> implements IList<T> {
 	    }
 	}
 	return -1;
+    }
+
+    @Override
+    public void sortBubble(Comparator<T> comparator) {
+	if (size() < 2) {
+	    return;
+	}
+	for (int i = size() - 1; i > 0; i--) {
+	    boolean flag = true;
+	    for (int j = 0; j < i; j++) {
+		if (comparator.compare(get(j), get(j + 1)) > 0) {
+		    flag = false;
+		    swap(i, j);
+		}
+	    }
+	    if (flag) {
+		break;
+	    }
+	}
+    }
+    
+    @SuppressWarnings("unchecked")
+    @Override
+    public void sortInsert(Comparator<T> comparator) {
+	if (size() < 2) {
+	    return;
+	}
+	for (int i = 1; i < size(); i++) {
+	    T temp = (T) array[i];
+	    int j = i;
+	    while (j > 0 && comparator.compare((T) array[j - 1], temp) >= 0) {
+		array[j] = array[j - 1];
+		j--;
+	    }
+	    array[j] = temp;
+	}
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public void sortSelection(Comparator<T> comparator) {
+	int end = size() - 1;
+	for (int i = 0; i < end; i++) {
+	    int min = i;
+	    for (int j = i + 1; j < size(); j++) {
+		if (comparator.compare((T) array[j], (T) array[min]) < 0) {
+		    min = j;
+		}
+	    }
+	    swap(i, min);
+	}
     }
 
     @Override

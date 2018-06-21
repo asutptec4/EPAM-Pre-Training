@@ -1,5 +1,7 @@
 package com.shishonok.task07.model.util.interfaces;
 
+import java.util.Comparator;
+
 /**
  * The interface provides method for working with collection of elements
  * 
@@ -27,4 +29,11 @@ public interface IList<T> {
     public int contains(T el);
 
     public void swap(int i, int j);
+    
+    public void sortBubble(Comparator<T> comparator);
+    
+    public void sortInsert(Comparator<T> comparator);
+    
+    public void sortSelection(Comparator<T> comparator);
+    
 }

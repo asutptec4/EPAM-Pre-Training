@@ -1,12 +1,12 @@
 package com.shishonok.task07.controller;
 
 import java.util.Random;
-
 import com.shishonok.task07.model.entity.Train;
 import com.shishonok.task07.model.entity.TrainCompany;
 import com.shishonok.task07.model.exception.MissingRollingStockException;
 import com.shishonok.task07.model.exception.NoTrainsException;
 import com.shishonok.task07.model.logic.TrainCompanyManager;
+import com.shishonok.task07.model.logic.TrainSearcher;
 import com.shishonok.task07.model.logic.TrainSorter;
 import com.shishonok.task07.model.util.MyChangeableList;
 import com.shishonok.task07.util.RandomTrainFactory;
@@ -32,12 +32,16 @@ public class TrainCompanyController {
 	} catch (NoTrainsException e) {
 	    e.printStackTrace();
 	}
-
+	
 	try {
 	    TrainSorter.sortByLength(tc.getTrainPark());
 	} catch (MissingRollingStockException e) {
 	    e.printStackTrace();
 	}
-	View.println(tc.getTrainPark());
+	View.println(
+		"Train park sorted by train length in ascending order: \n" + tc.getTrainPark());
+	int maxSpeed = 120;
+	View.printf("Train with speed %d  - %s ", maxSpeed,
+		TrainSearcher.searchBinary(tc.getTrainPark(), maxSpeed));
     }
 }
