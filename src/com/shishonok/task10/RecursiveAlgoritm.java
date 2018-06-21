@@ -44,7 +44,7 @@ public class RecursiveAlgoritm {
      * @return involved number
      */
     public static double involveNumber(double num, int exp) {
-	if (exp < 0) {
+	if (exp < 0 || num == 0) {
 	    return 0;
 	}
 	return involveNumberRec(num, exp);
