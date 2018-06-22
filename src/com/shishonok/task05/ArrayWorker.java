@@ -215,15 +215,26 @@ public class ArrayWorker {
 		if (arr == null || arr.length < 2) {
 			return;
 		}
-		int temp, j;
 		for (int i = 1; i < arr.length; i++) {
-			temp = arr[i];
-			j = i;
-			while (isAcsend ? j > 0 && arr[j - 1] >= temp : j > 0 && arr[j - 1] <= temp) {
-				arr[j] = arr[j - 1];
-				j--;
+			for (int j = i; j > 0; j--) {
+			    	if (isAcsend) {
+			    	    if (arr[j] < arr[j - 1]) {
+			    		arr[j] ^= arr[j - 1];
+			    		arr[j - 1] ^= arr[j];
+			    		arr[j] ^= arr[j - 1];
+			    	    } else {
+			    		break;
+			    	    }
+			    	} else {
+			    	    if (arr[j] > arr[j - 1]) {
+			    		arr[j] ^= arr[j - 1];
+			    		arr[j - 1] ^= arr[j];
+			    		arr[j] ^= arr[j - 1];
+			    	    } else {
+			    		break;
+			    	    }
+			    	}
 			}
-			arr[j] = temp;
 		}
 	}
 }

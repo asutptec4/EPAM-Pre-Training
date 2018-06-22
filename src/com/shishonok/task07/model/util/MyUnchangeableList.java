@@ -135,7 +135,7 @@ public class MyUnchangeableList<T> implements IList<T> {
 	    }
 	}
     }
-    
+
     @SuppressWarnings("unchecked")
     @Override
     public void sortInsert(Comparator<T> comparator) {
@@ -143,13 +143,10 @@ public class MyUnchangeableList<T> implements IList<T> {
 	    return;
 	}
 	for (int i = 1; i < size(); i++) {
-	    T temp = (T) array[i];
-	    int j = i;
-	    while (j > 0 && comparator.compare((T) array[j - 1], temp) >= 0) {
-		array[j] = array[j - 1];
-		j--;
+	    for (int j = i; j > 0 && comparator.compare((T) array[j - 1],
+		    (T) array[j]) >= 0; j--) {
+		swap(j, j - 1);
 	    }
-	    array[j] = temp;
 	}
     }
 
