@@ -1,5 +1,7 @@
 package com.shishonok.task10;
 
+import com.shishonok.task03.ex1.View;
+
 /**
  * Class contain recursion methods for solve task10.
  * 
@@ -7,7 +9,7 @@ package com.shishonok.task10;
  * @author Alexander Shishonok
  */
 public class RecursiveAlgoritm {
-    
+
     static final int FIRST_FIB_INDEX = 1;
     static final int FIRST_FIB_VALUE = 0;
     static final int SECOND_FIB_INDEX = 2;
@@ -101,11 +103,41 @@ public class RecursiveAlgoritm {
 
     private static long findFibonacciRec(int num) {
 	if (num == FIRST_FIB_INDEX) {
-	    return FIRST_FIB_VALUE; 	
+	    return FIRST_FIB_VALUE;
 	}
 	if (num == SECOND_FIB_INDEX) {
-	    return SECOND_FIB_VALUE; 
+	    return SECOND_FIB_VALUE;
 	}
 	return findFibonacciRec(num - 1) + findFibonacciRec(num - 2);
+    }
+
+    /**
+     * Solve Hanoi tower for n disk.
+     * 
+     * @param n
+     *            number of disk
+     * @param source
+     *            source rod
+     * @param temp
+     *            temporary rod
+     * @param dest
+     *            destination rod
+     */
+    public static void solveHanoiTower(int n, String source, String temp,
+	    String dest) {
+	if (n < 1) {
+	    View.println("No solve n < 1");
+	}
+	hanoi(n, source, temp, dest);
+    }
+
+    private static void hanoi(int n, String source, String temp, String dest) {
+	if (n > 1) {
+	    hanoi(n - 1, source, dest, temp);
+	    hanoi(1, source, temp, dest);
+	    hanoi(n - 1, temp, source, dest);
+	} else {
+	    View.println(source + " -> " + dest);
+	}
     }
 }

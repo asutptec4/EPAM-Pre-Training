@@ -38,6 +38,7 @@ public class Test {
 		RecursiveAlgoritm.findFibonacci(num));
 	View.printf("Iter alg %d number of Fibonacci is %d\n", num,
 		IterativeAlgoritm.findFibonacci(num));
+	RecursiveAlgoritm.solveHanoiTower(3, "A", "C", "B");
     }
 }
 
