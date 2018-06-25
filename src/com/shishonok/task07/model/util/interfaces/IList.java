@@ -36,4 +36,6 @@ public interface IList<T> {
     
     public void sortSelection(Comparator<T> comparator);
     
+    public void sortMerge(Comparator<T> comparator);
+    
 }

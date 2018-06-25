@@ -32,14 +32,16 @@ public class TrainCompanyController {
 	} catch (NoTrainsException e) {
 	    e.printStackTrace();
 	}
-	
+
 	try {
 	    TrainSorter.sortByLength(tc.getTrainPark());
+	    // TrainSorter.sortByWeight(tc.getTrainPark());
+	    // TrainSorter.sortByLoadCapacity(tc.getTrainPark());
 	} catch (MissingRollingStockException e) {
 	    e.printStackTrace();
 	}
-	View.println(
-		"Train park sorted by train length in ascending order: \n" + tc.getTrainPark());
+	View.println("Train park sorted by train length in ascending order: \n"
+		+ tc.getTrainPark());
 	int maxSpeed = 120;
 	View.printf("Train with speed %d  - %s ", maxSpeed,
 		TrainSearcher.searchBinary(tc.getTrainPark(), maxSpeed));

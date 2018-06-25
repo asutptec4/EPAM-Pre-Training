@@ -166,6 +166,50 @@ public class MyUnchangeableList<T> implements IList<T> {
     }
 
     @Override
+    public void sortMerge(Comparator<T> comparator) {
+	sortMerge(comparator, 0, size() - 1);
+    }
+
+    private void sortMerge(Comparator<T> comparator, int start, int end) {
+	if (start >= end) {
+	    return;
+	} else {
+	    int mid = start - (start - end) / 2;
+	    sortMerge(comparator, start, mid);
+	    sortMerge(comparator, mid + 1, end);
+	    merge(comparator, start, mid + 1, end);
+	}
+    }
+
+    @SuppressWarnings("unchecked")
+    private void merge(Comparator<T> comparator, int startLeft, int startRight,
+	    int endRight) {
+	int i = 0;
+	int start = startLeft;
+	int mid = startRight - 1;
+	int n = endRight - start + 1;
+	Object b[] = new Object[n];
+	while (startLeft <= mid && startRight <= endRight) {
+	    if (comparator.compare((T) array[startLeft],
+		    (T) array[startRight]) < 0) {
+		b[i++] = array[startLeft++];
+	    } else {
+		b[i++] = array[startRight++];
+	    }
+	}
+	while (startLeft <= mid) {
+	    b[i++] = array[startLeft++];
+	}
+	while (startRight <= endRight) {
+	    b[i++] = array[startRight++];
+	}
+
+	for (i = 0; i < n; i++) {
+	    array[start + i] = b[i];
+	}
+    }
+
+    @Override
     public String toString() {
 	StringBuilder builder = new StringBuilder();
 	for (int i = 0; i < size(); i++) {
@@ -174,25 +218,4 @@ public class MyUnchangeableList<T> implements IList<T> {
 	}
 	return builder.toString();
     }
-
-    // public T[] findBy(Function<T, Boolean> func) {
-    // int count = 0;
-    // for (int i = 0; i < currentIndex; i++) {
-    // if (func.apply((T) array[i])) {
-    // count++;
-    // }
-    // }
-    // if (count != 0) {
-    // Object[] temp = new Object[count];
-    // int j = 0;
-    // for (int i = 0; i < currentIndex; i++) {
-    // if (func.apply((T) array[i])) {
-    // temp[j++] = (T) array[i];
-    // }
-    // }
-    // return (T[]) temp;
-    // } else {
-    // return null;
-    // }
-    // }
 }

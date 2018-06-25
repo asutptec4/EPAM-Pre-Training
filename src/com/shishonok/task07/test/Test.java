@@ -103,7 +103,8 @@ public class Test {
 	};
 	// railcarList.sortBubble(comparator);
 	// railcarList.sortInsert(comparator);
-	railcarList.sortSelection(comparator);
+	// railcarList.sortSelection(comparator);
+	railcarList.sortMerge(comparator);
 	View.println("Collection after");
 	View.println(railcarList);
 	View.println("End test.");
